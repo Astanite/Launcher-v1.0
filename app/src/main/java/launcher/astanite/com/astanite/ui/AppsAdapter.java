@@ -14,7 +14,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import launcher.astanite.com.astanite.R;
+import launcher.astanite.com.astanite.*;
 import launcher.astanite.com.astanite.data.AppInfo;
 
 public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
