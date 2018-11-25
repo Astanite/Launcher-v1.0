@@ -3,6 +3,7 @@ package launcher.astanite.com.astanite.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -35,7 +36,7 @@ public class HomeActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        Log.i("MYINFO", "Creating Home Activity");
 
         allAppsButton = findViewById(R.id.allAppsButton);
         rootView = findViewById(R.id.rootView);
@@ -61,14 +62,14 @@ public class HomeActivity extends AppCompatActivity implements
             openAppDrawer();
         });
 
-        mainViewModel.isAppDrawerOpen
-                .observe(this, isOpen -> {
-                    if (isOpen) {
-                        openAppDrawer();
-                    } else {
-                        closeAppDrawer();
-                    }
-                });
+//        mainViewModel.isAppDrawerOpen
+//                .observe(this, isOpen -> {
+//                    if (isOpen) {
+//                        openAppDrawer();
+//                    } else {
+//                        closeAppDrawer();
+//                    }
+//                });
 
         mainViewModel.getCurrentMode()
                 .observe(this, mode -> {
@@ -116,6 +117,7 @@ public class HomeActivity extends AppCompatActivity implements
 
     @Override
     public void onBackPressed() {
+        Log.i("MYINFO", "Back button pressed.");
         if (mainViewModel.isAppDrawerOpen.getValue()) {
             closeAppDrawer();
             mainViewModel.isAppDrawerOpen.setValue(false);
@@ -173,9 +175,9 @@ public class HomeActivity extends AppCompatActivity implements
     @Override
     protected void onResume() {
         super.onResume();
-        hideKeyboard(this);
     }
 
+    // Unused Function
     private void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         //Find the currently focused view, so we can grab the correct window token from it.
